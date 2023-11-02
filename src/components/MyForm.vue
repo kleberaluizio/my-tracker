@@ -2,7 +2,7 @@
     <div class="box">
         <div class="columns">
             <div class="column is-8" role="form" aria-label="Form for new task creation">
-                <input type="text" class="input" placeholder="What task do want to begin?" v-model="taskDescription">
+                <input type="text" class="input" placeholder="What task do want to begin?" v-model="description">
             </div>
             <div class="column">
                 <TimerLogic @whenCronometerStop="finishTask" />
@@ -17,19 +17,25 @@ import TimerLogic from './TimerLogic.vue'
 
 export default defineComponent({
     name: 'MyForm',
+    emits: [
+        'onSaveTask'
+    ],
     components: {
         TimerLogic,
     },
-    data (){
-        return{
-            taskDescription: ''
+    data() {
+        return {
+            description: ''
         }
     },
     methods: {
-        finishTask (elapsedTime: number) : void {
-            console.log('Task time: ',elapsedTime)
-            console.log('Task description: ', this.taskDescription)
-            this.taskDescription=''
+        finishTask(elapsedTime: number): void {
+            this.$emit('onSaveTask', {
+                timeLenghtInSeconds: elapsedTime,
+                taskDescription: this.description
+            }
+            )
+            this.description = ''
         }
     }
 })
