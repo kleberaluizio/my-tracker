@@ -16,15 +16,14 @@ export default defineComponent({
 header {
     padding: 1rem;
     background-color: #0d3b66;
-    width: 100vb;
+    width: 100%;
     height: 100vh;
 }
 
 img {
-    /* border-radius: 25px; */
-    /* margin: 5px; */
-    width: 30%;
-    height: 30%;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
 }
 @media only screen and (max-width: 768px) {
     header {
