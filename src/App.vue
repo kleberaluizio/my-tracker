@@ -5,6 +5,7 @@
     </div>
     <div class="column is-three-quarter">
       <MyForm />
+      <!-- Task List -->
     </div>
   </main>
 </template>
@@ -17,12 +18,13 @@ import MyForm   from './components/MyForm.vue'
 export default defineComponent({
   name: 'App',
   components:{
-    SideBar
-    ,
+    SideBar,
     MyForm
   }
 });
 </script>
 
-<style></style>
+<style>
+
+</style>
 
