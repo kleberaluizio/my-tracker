@@ -13,7 +13,6 @@ export default defineComponent({
         timeInSeconds: {
             type: Number,
             default: 0
-
         }
     },
     computed: {

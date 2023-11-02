@@ -1,23 +1,14 @@
 <template>
     <div class="is-flex is-align-items-center is-justify-content-space-between">
         <CronometerLogic :timeInSeconds="timeInSeconds" />
-        <button class="button" @click="startCronometer()" :disabled="runningCronometer">
-            <span class="icon">
-                <i class="fas fa-play"></i>
-            </span>
-            <span>play</span>
-        </button>
-        <button class="button" @click="stopCronometer()" :disabled="!runningCronometer">
-            <span class="icon">
-                <i class="fas fa-stop"></i>
-            </span>
-            <span>stop</span>
-        </button>
+        <ButtonLogic @clicked="startCronometer" buttonIcon="fas fa-play" buttonText="play" :isButtonDisabled="runningCronometer"/>
+        <ButtonLogic @clicked="stopCronometer" buttonIcon="fas fa-stop" buttonText="stop" :isButtonDisabled="!runningCronometer"/>
     </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
 import CronometerLogic from './CronometerLogic.vue'
+import ButtonLogic from './ButtonLogic.vue'
 
 export default defineComponent({
     name: 'TimerLogic',
@@ -26,6 +17,7 @@ export default defineComponent({
     ],
     components: {
         CronometerLogic,
+        ButtonLogic
     },
     data() {
         return {
