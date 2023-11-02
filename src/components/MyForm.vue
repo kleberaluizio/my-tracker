@@ -7,15 +7,15 @@
             <div class="column">
                 <div class="is-flex is-align-items-center is-justify-content-space-between">
                     <section>
-                        <strong>00:00:00</strong>
+                        <strong>{{elapsedTime}}</strong>
                     </section>
-                    <button class="button">
+                    <button class="button" @click="startCronometer()">
                         <span class="icon">
                             <i class="fas fa-play"></i>
                         </span>
                         <span>play</span>
                     </button>
-                    <button class="button">
+                    <button class="button" @click="stopCronometer()">
                         <span class="icon">
                             <i class="fas fa-stop"></i>
                         </span>
@@ -31,7 +31,28 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-    name: 'MyForm'
+    name: 'MyForm',
+    data(){
+        return{
+            timeInSeconds: 0,
+            cronometer: 0
+        }
+    },
+    computed: {
+        elapsedTime() : string {
+            return (new Date(this.timeInSeconds * 1000)).toISOString().substr(11,8)
+        }
+    },
+    methods:{
+        startCronometer (){ //console.log('Starting cronometer')
+            this.cronometer = setInterval(()=>{
+                this.timeInSeconds++
+            },1000)
+        },
+        stopCronometer (){ //console.log('Stoping cronometer')    
+            clearInterval(this.cronometer)
+        }
+    }
 })
 </script>
 
