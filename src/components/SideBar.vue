@@ -22,9 +22,8 @@ export default defineComponent({
         buttonText() {
             if(this.nightModeEnabled){
                 return "Disable night mode"
-            } else {
-                return "Enable night mode"
             }
+            return "Enable night mode"
         
         }
     },

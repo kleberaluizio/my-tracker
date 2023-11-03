@@ -32,3 +32,8 @@ export default defineComponent({
 })
 </script>
 
+<style>
+.column{
+    color:  #000;
+}
+</style>

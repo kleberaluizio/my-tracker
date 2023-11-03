@@ -5,7 +5,6 @@
     </div>
     <div class="column is-three-quarter content">
       <MyForm @onSaveTask="saveTask" />
-      <!-- Task List -->
       <div class="list">
         <TaskElement v-for="(task, index) in tasks" :key="index" :task="task" />
         <BoxConfig v-if="isTasksEmpty">
@@ -55,7 +54,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style>
 .lista {
   padding: 1.25rem;
 }

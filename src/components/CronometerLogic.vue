@@ -23,9 +23,8 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style scoped>
 .display{
     color: var(--text-primary);
-    background-color: var(--bg-primary);
 }
 </style>
