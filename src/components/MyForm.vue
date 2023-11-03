@@ -12,7 +12,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent , useStore} from 'vue'
+import { useStore } from 'vuex'
+import { key } from '@/store'
+
 import TimerLogic from './TimerLogic.vue'
 
 export default defineComponent({
@@ -37,6 +40,9 @@ export default defineComponent({
             )
             this.description = ''
         }
+    }, 
+    setup() {
+        const store = useStore(key)
     }
 })
 </script>
