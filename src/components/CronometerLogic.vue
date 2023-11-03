@@ -1,6 +1,6 @@
 <template>
     <section>
-        <strong class="display">{{ elapsedTime }}</strong>
+        <strong :class="{'display' : isNightModeColorEnabled}">{{ elapsedTime }}</strong>
     </section>
 </template>
 
@@ -13,6 +13,10 @@ export default defineComponent({
         timeInSeconds: {
             type: Number,
             default: 0
+        },
+        isNightModeColorEnabled:{
+            type: Boolean,
+            default: true
         }
     },
     computed: {

@@ -6,7 +6,7 @@
     <div class="column is-three-quarter content">
       <MyForm @onSaveTask="saveTask" />
       <div class="list">
-        <TaskElement v-for="(task, index) in tasks" :key="index" :task="task" />
+        <TaskElement v-for="(task, index) in tasks" :key="index" :task="task"/>
         <BoxConfig v-if="isTasksEmpty">
           Task history is empty!
         </BoxConfig>

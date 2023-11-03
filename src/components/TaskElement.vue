@@ -1,11 +1,15 @@
 <template>
     <BoxConfig>
         <div class="columns">
-            <div class="column is-7">
+            <div class="column is-6">
                 {{ task.taskDescription || 'Task without description' }}
             </div>
-            <div class="column is-5">
-                <CronometerLogic :timeInSeconds="task.timeLenghtInSeconds" />
+            <div class="column is-3">
+                <CronometerLogic :timeInSeconds="task.timeLenghtInSeconds" :isNightModeColorEnabled="false" />
+            </div>
+            <div class="column is-3">
+                <button class="button is-warning">Editar</button>
+                <button class="button is-danger">Deletar</button>
             </div>
         </div>
     </BoxConfig>
@@ -20,9 +24,9 @@ import BoxConfig from './BoxConfig.vue';
 export default defineComponent({
     name: "TaskElement",
     components: {
-    CronometerLogic,
-    BoxConfig,
-},
+        CronometerLogic,
+        BoxConfig,
+    },
     props: {
         task: {
             type: Object as PropType<ITask>,
@@ -32,8 +36,11 @@ export default defineComponent({
 })
 </script>
 
-<style>
-.column{
-    color:  #000;
+<style scoped>
+.column {
+    color: #000;
+}
+.button{
+    margin-right: 1rem;
 }
 </style>
