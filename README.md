@@ -1,5 +1,5 @@
 # my-tracker
-I created this project to have a better understanding of Vue.Js
+I created this project to have a better understanding on Vue.Js and its functionalities. 
 
 ## Project setup
 ```
