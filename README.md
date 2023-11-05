@@ -1,4 +1,5 @@
 # my-tracker
+I created this project to have a better understanding of Vue.Js
 
 ## Project setup
 ```
