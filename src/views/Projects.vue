@@ -22,9 +22,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import IProject from '../interfaces/IProject'
 import ProjectElement from '@/components/ProjectElement.vue';
 import BoxConfig from '@/components/BoxConfig.vue';
+import { useStore } from '@/store';
 
 export default defineComponent({
     name: "ProjectView",
@@ -35,7 +35,6 @@ export default defineComponent({
     data() {
         return {
             projectTitle: "",
-            projects: [] as IProject[]
         };
     },
     computed:{
@@ -45,12 +44,14 @@ export default defineComponent({
     },
     methods: {
         saveProject() {
-            const project: IProject = {
-                id: new Date().toISOString(),
-                title: this.projectTitle
-            };
-            this.projects.push(project);
+            this.store.commit('ADD_PROJECT', this.projectTitle)
             this.projectTitle = "";
+        }
+    }, 
+    setup() {
+        const store = useStore()
+        return{
+            store
         }
     }
 })
