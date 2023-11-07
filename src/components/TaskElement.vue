@@ -2,14 +2,14 @@
     <BoxConfig>
         <div class="columns">
             <div class="column is-6">
-                {{ task.taskDescription || 'Task without description' }}
+                {{ task.taskDescription  + ' ['+ task.project.title + ']'|| 'Task without description' }}
             </div>
             <div class="column is-3">
                 <CronometerLogic :timeInSeconds="task.timeLenghtInSeconds" :isNightModeColorEnabled="false" />
             </div>
             <div class="column is-3">
-                <button class="button is-warning">Editar</button>
-                <button class="button is-danger">Deletar</button>
+                <button class="button is-warning"><i class="fas fa-pencil-alt"></i></button>
+                <button class="button is-danger"> <i class="fas fa-trash"></i></button>
             </div>
         </div>
     </BoxConfig>
