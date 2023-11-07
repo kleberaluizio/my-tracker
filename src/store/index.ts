@@ -19,7 +19,12 @@ export const store = createStore<state>({
                 title: projectName
             } as IProject
             state.projects.push(newProject)
+        },
+        'EDIT_PROJECT' (state, project: IProject){
+            const index = state.projects.findIndex(proj => proj.id == project.id)
+            state.projects[index] = project
         }
+        
     }
 })
 
