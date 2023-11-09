@@ -27,7 +27,7 @@ export const store = createStore<state>({
         'DELETE_PROJECT' (state, id: string){
             state.projects = state.projects.filter(proj => proj.id != id)
         }
-        
+        //Adicionar acoes da task
     }
 })
 
