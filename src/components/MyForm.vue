@@ -29,12 +29,11 @@ import { useStore } from 'vuex'
 import { key } from '@/store'
 import TimerLogic from './TimerLogic.vue'
 import { computed } from '@vue/reactivity'
+import { ADD_TASK } from '@/store/mutations-type'
+import ITask from '@/interfaces/ITask'
 
 export default defineComponent({
     name: 'MyForm',
-    emits: [
-        'onSaveTask'
-    ],
     components: {
         TimerLogic,
     },
@@ -46,20 +45,26 @@ export default defineComponent({
     },
     methods: {
         finishTask(elapsedTime: number): void {
-            this.$emit('onSaveTask', {
+            const newTask = {
                 timeLenghtInSeconds: elapsedTime,
                 taskDescription: this.description,
                 project: this.projects.find(pro => pro.id == this.idProject)
-            }
-            )
+            } as ITask
+            this.saveTask(newTask)
             this.description = ''
             this.idProject = ''
+        },
+        saveTask(task: ITask): void{
+            this.store.commit(ADD_TASK,task)     
         }
+        
+    
     }, 
     setup() {
         const store = useStore(key)
         return{
-            projects: computed(() => (store.state.projects))
+            projects: computed(() => (store.state.projects)),
+            store
         }
     }
 })

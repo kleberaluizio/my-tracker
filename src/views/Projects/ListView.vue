@@ -39,13 +39,14 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { useStore } from '@/store';
-import IProject from '@/interfaces/IProject';
+import {DELETE_PROJECT} from '@/store/mutations-type'
+import { RouterLink } from 'vue-router';
 
 export default defineComponent({
     name: "ListView",
     methods:{
         deleteProject(id: string){
-            this.store.commit('DELETE_PROJECT', id)
+            this.store.commit(DELETE_PROJECT, id)
         }
     },
     setup() {

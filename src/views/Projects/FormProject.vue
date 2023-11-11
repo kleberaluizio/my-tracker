@@ -15,6 +15,8 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { useStore } from '@/store';
+import { ADD_PROJECT, EDIT_PROJECT } from "@/store/mutations-type";
+
 
 export default defineComponent({
     name: "FormProject",
@@ -23,26 +25,26 @@ export default defineComponent({
             type: String
         }
     },
+    data() {
+        return {
+            projectTitle: "",
+        };
+    },
     mounted() {
         if(this.id){
            const editProject = this.store.state.projects.find(proj => proj.id == this.id)
            this.projectTitle = editProject?.title || ''
         }
     },
-    data() {
-        return {
-            projectTitle: "",
-        };
-    },
     methods: {
         saveProject() {
             if(this.id){
-                this.store.commit('EDIT_PROJECT', {
+                this.store.commit(EDIT_PROJECT, {
                     id: this.id,
                     title: this.projectTitle
                 })
             } else {
-                this.store.commit('ADD_PROJECT', this.projectTitle)
+                this.store.commit(ADD_PROJECT, this.projectTitle)
             }
             this.projectTitle = "";
             this.$router.push('/projects')// Fprmece a rpta mpva desejada
@@ -55,4 +57,4 @@ export default defineComponent({
         }
     }
 })
-</script>
+</script>,

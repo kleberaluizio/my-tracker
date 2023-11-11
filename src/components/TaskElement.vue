@@ -2,24 +2,30 @@
     <BoxConfig>
         <div class="columns">
             <div class="column is-6">
-                {{ task.taskDescription  + ' ['+ task.project.title + ']'|| 'Task without description' }}
+                {{ task.taskDescription  || 'Task without description' }}
             </div>
             <div class="column is-3">
                 <CronometerLogic :timeInSeconds="task.timeLenghtInSeconds" :isNightModeColorEnabled="false" />
             </div>
             <div class="column is-3">
-                <button class="button is-warning"><i class="fas fa-pencil-alt"></i></button>
-                <button class="button is-danger"> <i class="fas fa-trash"></i></button>
+                <button class="button is-warning">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+                <button class="button is-danger" @click="deleteTask(task.id)"> 
+                    <i class="fas fa-trash"></i>
+                </button>
             </div>
         </div>
     </BoxConfig>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, computed } from 'vue';
 import CronometerLogic from './CronometerLogic.vue';
 import ITask from '@/interfaces/ITask';
 import BoxConfig from './BoxConfig.vue';
+import { useStore } from '@/store';
+import { DELETE_TASK } from '@/store/mutations-type';
 
 export default defineComponent({
     name: "TaskElement",
@@ -31,6 +37,19 @@ export default defineComponent({
         task: {
             type: Object as PropType<ITask>,
             required: true
+        }
+    },
+    methods:{
+        deleteTask(id: string) : void {
+            console.log('PASSOU AQUI 0')
+
+            this.store.commit(DELETE_TASK, id)
+        }
+    },
+    setup() {
+        const store = useStore()
+        return {
+            store
         }
     }
 })

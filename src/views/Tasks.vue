@@ -1,7 +1,7 @@
 <template>
-    <MyForm @onSaveTask="saveTask" />
+    <MyForm />
     <div class="list">
-        <TaskElement v-for="(task, index) in tasks" :key="index" :task="task" />
+        <TaskElement v-for="task in tasks" :key="task.id" :task="task" />
         <BoxConfig v-if="isTasksEmpty">
             Task history is empty!
         </BoxConfig>
@@ -9,11 +9,11 @@
 </template>
   
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, computed } from 'vue';
 import MyForm from '../components/MyForm.vue'
 import TaskElement from '../components/TaskElement.vue'
-import ITask from '../interfaces/ITask';
 import BoxConfig from '../components/BoxConfig.vue';
+import { useStore } from '@/store';
 
 export default defineComponent({
     name: 'TaskView',
@@ -22,21 +22,21 @@ export default defineComponent({
         TaskElement,
         BoxConfig
     },
-    data() {
-        return {
-            tasks: [] as ITask[]
-        }
-    },
     computed: {
         isTasksEmpty(): boolean {
             return this.tasks.length === 0
         }
     },
-    methods: {
-        saveTask(task: ITask) {
-            this.tasks.push(task)
+    setup() {
+        const store = useStore()
+        return {
+            tasks: computed(() => (store && store.state.tasks) || []),
+            store
+            // tasks: computed(() => store.state.tasks),
+            // store
         }
     }
+
 });
 </script>
  
