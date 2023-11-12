@@ -40,7 +40,6 @@
 import { defineComponent, computed } from 'vue';
 import { useStore } from '@/store';
 import {DELETE_PROJECT} from '@/store/mutations-type'
-import { RouterLink } from 'vue-router';
 
 export default defineComponent({
     name: "ListView",

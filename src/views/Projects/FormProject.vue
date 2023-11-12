@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent } from 'vue';
 import { useStore } from '@/store';
 import { ADD_PROJECT, EDIT_PROJECT } from "@/store/mutations-type";
 

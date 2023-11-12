@@ -35,14 +35,12 @@ export const store = createStore<state>({
         [ADD_TASK] (state, newTask: ITask){
             newTask.id = new Date().toISOString(),
             state.tasks.push(newTask)
-            console.log(state.tasks)
         },
         [EDIT_TASK] (state, task: ITask){
             const index = state.tasks.findIndex(t => t.id == task.id)
             state.tasks[index] = task
         },
         [DELETE_TASK] (state,  id: string){
-            console.log('PASSOU AQUI')
             state.tasks = state.tasks.filter(t => t.id != id)
 
         },
