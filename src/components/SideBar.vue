@@ -7,15 +7,15 @@
         <nav class="panel mt-5">
             <ul>
                 <li>
-                    <RouterLink to="/" class="link">
-                        <i class="fas fa-tasks"> </i>
-                        Tasks
-                    </RouterLink>
+                    <router-link to="/" class="link">
+                        <i class="fas fa-tasks"> Tasks</i>
+                        
+                    </router-link>
                 </li>
                 <li>
                     <RouterLink to="/projects" class="link">
-                        <i class="fas fa-project-diagram"> </i>
-                        Projects
+                        <i class="fas fa-project-diagram"> Projects</i>
+                        
                     </RouterLink>
                 </li>
             </ul>
