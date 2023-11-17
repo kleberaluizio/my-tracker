@@ -8,7 +8,7 @@
                 <CronometerLogic :timeInSeconds="task.timeLenghtInSeconds" :isNightModeColorEnabled="false" />
             </div>
             <div class="column is-3">
-                <router-link :to="`/edit-task`">
+                <router-link :to="`/edit/${task.id}`">
                     <button class="button is-warning">
                         <i class="fas fa-pencil-alt"></i>
                     </button>

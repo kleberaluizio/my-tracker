@@ -58,3 +58,10 @@ export default defineComponent({
     }
 })
 </script>,
+
+<style scoped>
+.label {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+</style>
