@@ -4,7 +4,7 @@
       <SideBar @onNightModeEnabled="changeTheme"/>
     </div>
     <div class="column is-three-quarter content">
-      <Notifications></Notifications>
+      <Notifications/>
       <RouterView></RouterView>
     </div>
 

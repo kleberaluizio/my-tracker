@@ -15,7 +15,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useStore } from '@/store';
-import { ADD_PROJECT, EDIT_PROJECT } from "@/store/mutations-type";
+import { ADD_PROJECT, EDIT_PROJECT, NOTIFY } from "@/store/mutations-type";
+import { NotificationType } from '@/interfaces/INotification';
 
 
 export default defineComponent({
@@ -47,6 +48,11 @@ export default defineComponent({
                 this.store.commit(ADD_PROJECT, this.projectTitle)
             }
             this.projectTitle = "";
+            this.store.commit(NOTIFY,{
+                title: 'New project saved!',
+                text: "Your project is already available",
+                type: NotificationType.SUCCESS
+            })
             this.$router.push('/projects')// Fprmece a rpta mpva desejada
         }
     },
