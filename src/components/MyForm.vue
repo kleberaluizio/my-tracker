@@ -29,8 +29,9 @@ import { useStore } from 'vuex'
 import { key } from '@/store'
 import TimerLogic from './TimerLogic.vue'
 import { computed } from '@vue/reactivity'
-import { ADD_TASK } from '@/store/mutations-type'
+import { ADD_TASK, NOTIFY } from '@/store/mutations-type'
 import ITask from '@/interfaces/ITask'
+import { NotificationType } from '@/interfaces/INotification'
 
 export default defineComponent({
     name: 'MyForm',
@@ -45,10 +46,19 @@ export default defineComponent({
     },
     methods: {
         finishTask(elapsedTime: number): void {
+            const project = this.projects.find(pro => pro.id == this.idProject)
+            if(!project){
+                this.store.commit(NOTIFY,{
+                    title: 'Ops!',
+                    text: 'Select a project before finishing task!',
+                    type: NotificationType.WARNING,
+                });
+                return;
+            }
             const newTask = {
                 timeLenghtInSeconds: elapsedTime,
                 taskDescription: this.description,
-                project: this.projects.find(pro => pro.id == this.idProject)
+                project: project
             } as ITask
             this.saveTask(newTask)
             this.description = ''
