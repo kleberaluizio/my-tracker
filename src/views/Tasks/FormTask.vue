@@ -16,7 +16,6 @@
 </template>
 
 <script lang="ts">
-import ITask from '@/interfaces/ITask';
 import { useStore } from '@/store';
 import { EDIT_TASK } from '@/store/mutations-type';
 import { defineComponent } from 'vue';

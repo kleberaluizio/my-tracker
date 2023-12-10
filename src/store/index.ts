@@ -3,7 +3,7 @@ import { Store, createStore, useStore as vuexUseStore } from "vuex";
 import { InjectionKey } from "vue";
 import ITask from "@/interfaces/ITask";
 import { ADD_PROJECT, ADD_TASK, DELETE_PROJECT, DELETE_TASK, EDIT_PROJECT, EDIT_TASK, NOTIFY } from "./mutations-type";
-import { INotification, NotificationType } from "@/interfaces/INotification";
+import { INotification} from "@/interfaces/INotification";
 
 interface state{
     projects: IProject[],

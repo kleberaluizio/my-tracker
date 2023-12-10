@@ -15,7 +15,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useStore } from '@/store';
-import { ADD_PROJECT, EDIT_PROJECT, NOTIFY } from "@/store/mutations-type";
+import { ADD_PROJECT, EDIT_PROJECT} from "@/store/mutations-type";
 import { NotificationType } from '@/interfaces/INotification';
 import {MixinNotification} from '@/mixins/notify'
 
